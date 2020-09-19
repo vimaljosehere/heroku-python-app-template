@@ -1,67 +1,21 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import pandas as pd
+from flask import Flask, request, render_template, session, redirect
 import numpy as np
-import plotly.graph_objs as go
-
-########### Define your variables
-beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[35, 60, 85, 75]
-abv_values=[5.4, 7.1, 9.2, 4.3]
-df = pd.DataFrame({'beers':beers, 'ibu':ibu_values, 'abv':abv_values})
-color1='lightblue'
-color2='darkgreen'
-mytitle='Comparison of Beers'
-tabtitle='Sample Python App !'
-myheading='Testing out headings - Flying Dog Beers'
-label1='IBU'
-label2='ABV'
-githublink='https://github.com/vimaljosehere/heroku-python-app-template'
-sourceurl='https://www.flyingdog.com/beers/'
-
-########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
-    name=label1,
-    marker={'color':color1}
-)
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
-    name=label2,
-    marker={'color':color2}
-)
-
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
-    barmode='group',
-    title = mytitle
-)
-
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
+import pandas as pd
 
 
-########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-server = app.server
-app.title=tabtitle
+app = Flask(__name__)
 
-########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
-    ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
-    html.A(df)
-    ]
-)
+df = pd.DataFrame({'A': [0, 1, 2, 3, 4],
+                   'B': [5, 6, 7, 8, 9],
+                   'C': ['a', 'b', 'c--', 'd', 'e']})
+
+
+@app.route('/', methods=("POST", "GET"))
+def html_table():
+
+    return render_template('simple.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+
+
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run(host='0.0.0.0')
