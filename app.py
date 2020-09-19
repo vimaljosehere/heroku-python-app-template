@@ -11,7 +11,7 @@ df = pd.DataFrame({'A': [0, 1, 2, 3, 4],
 
 
 @app.route('/', methods=("POST", "GET"))
-print("Hello World")
+# print("Hello World")
 # def html_table():
 #   return render_template('simple.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
