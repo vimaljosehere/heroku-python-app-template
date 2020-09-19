@@ -1,12 +1,15 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
+import numpy as np
 import plotly.graph_objs as go
 
 ########### Define your variables
 beers=['Chesapeake Stout', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
 ibu_values=[35, 60, 85, 75]
 abv_values=[5.4, 7.1, 9.2, 4.3]
+df = pd.DataFrame({'beers':beers, 'ibu':ibu_values, 'abv':abv_values})
 color1='lightblue'
 color2='darkgreen'
 mytitle='Comparison of Beers'
@@ -55,7 +58,7 @@ app.layout = html.Div(children=[
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A('Data Source', href=sourceurl),
+    html.A('Data Source', href=sourceurl)
     ]
 )
 
