@@ -9,12 +9,12 @@ ibu_values=[35, 60, 85, 75]
 abv_values=[5.4, 7.1, 9.2, 4.3]
 color1='lightblue'
 color2='darkgreen'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
+mytitle='Comparison of Beers'
+tabtitle='Sample Python App !'
+myheading='Testing out headings - Flying Dog Beers'
 label1='IBU'
 label2='ABV'
-githublink='https://github.com/austinlasseter/flying-dog-beers'
+githublink='https://github.com/vimaljosehere/heroku-python-app-template'
 sourceurl='https://www.flyingdog.com/beers/'
 
 ########### Set up the chart
