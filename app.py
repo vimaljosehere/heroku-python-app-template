@@ -58,7 +58,8 @@ app.layout = html.Div(children=[
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
-    html.A('Data Source', href=sourceurl)
+    html.A('Data Source', href=sourceurl),
+    html.H1(print(df))
     ]
 )
 
